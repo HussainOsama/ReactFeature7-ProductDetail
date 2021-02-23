@@ -76,3 +76,7 @@ export const ThemeButton = styled.button`
 export const Title = styled.h1`
   text-align: center;
 `;
+
+export const DeleteButtonStyled = styled.p`
+  color: ${(props) => props.theme.red};
+`;

@@ -27,6 +27,7 @@ const theme = {
 function App() {
   const [currentTheme, setCurrentTheme] = useState("light");
   const [product, setProduct] = useState(null);
+  const [_products, setProducts] = useState(products);
 
   console.log("App", product);
 
@@ -35,10 +36,30 @@ function App() {
 
   const setView = () => {
     if (product) {
-      return <ProductDetail product={product} />;
+      return (
+        <ProductDetail
+          product={product}
+          deleteProduct={deleteProduct}
+          setProducts={setProducts}
+        />
+      );
     } else {
-      return <ProductList setProduct={setProduct} />;
+      return (
+        <ProductList
+          setProduct={setProduct}
+          deleteProduct={deleteProduct}
+          products={_products}
+        />
+      );
     }
+  };
+
+  const deleteProduct = (productId) => {
+    const updatedProducts = _products.filter(
+      (product) => product.id !== productId
+    );
+    setProducts(updatedProducts);
+    console.log(updatedProducts);
   };
 
   return (

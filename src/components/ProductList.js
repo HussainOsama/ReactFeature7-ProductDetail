@@ -10,15 +10,27 @@ import { useState } from "react";
 const ProductList = (props) => {
   const [query, setQuery] = useState("");
 
-  const productList = products
+  const productList = props.products
     .filter((product) => product.name.includes(query))
     .map((product) => (
       <ProductItem
         product={product}
         key={product.id}
         setProduct={props.setProduct}
+        deleteProduct={props.deleteProduct}
       />
     ));
+
+  let x = "d";
+
+  // const CookieList = () => {
+  //   const deleteCookie = cookieId => {
+  //     console.log(`Delete cookie with the ID ${cookieId}`);
+  //   };
+
+  // const productList = products
+  //   .filter((product) => product.name.includes(query))
+  //   .map((product) => <productItem product={product} key={product.id} />);
 
   return (
     <>
